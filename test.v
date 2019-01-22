@@ -6,8 +6,8 @@ module test (
 );
 
 wire	clk;
-reg [24:0] count; //22
-reg [3:0]  step;
+reg [22:0] count; //22
+reg [5:0]  step;
 reg [15:0] char_a;
 reg [15:0] char_b;
 reg [15:0] char_c;
@@ -30,222 +30,75 @@ begin
 	if (count == 0)
 	begin
 		step = step + 1;
-		if (step == 1)
+		case(step)
+			01: asciiOut = "A";
+			02: asciiOut = "B";
+			03: asciiOut = "C";
+			04: asciiOut = "D";
+			05: asciiOut = "E";
+			06: asciiOut = "F";
+			07: asciiOut = "G";
+			08: asciiOut = "H";
+			09: asciiOut = "I";
+			10: asciiOut = "J";
+			11: asciiOut = "K";
+			12: asciiOut = "L";
+			13: asciiOut = "M";
+			14: asciiOut = "N";
+			15: asciiOut = "O";
+			16: asciiOut = "P";
+			17: asciiOut = "Q";
+			18: asciiOut = "R";
+			19: asciiOut = "S";
+			20: asciiOut = "T";
+			21: asciiOut = "U";
+			22: asciiOut = "V";
+			23: asciiOut = "W";
+			24: asciiOut = "X";
+			25: asciiOut = "Y";
+			26: asciiOut = "Z";
+			27: asciiOut = "[";
+			28: asciiOut = "]";
+			29: asciiOut = "^";
+			30: asciiOut = "_";
+			31: asciiOut = "`";
+			32: asciiOut = "0";
+			33: asciiOut = "1";
+			34: asciiOut = "2";
+			35: asciiOut = "3";
+			36: asciiOut = "4";
+			37: asciiOut = "5";
+			38: asciiOut = "6";
+			39: asciiOut = "7";
+			40: asciiOut = "8";
+			41: asciiOut = "9";
+			42: asciiOut = ":";
+			43: asciiOut = ";";
+			44: asciiOut = "<";
+			45: asciiOut = "=";
+			46: asciiOut = ">";
+			47: asciiOut = "?";
+			48: asciiOut = "@";
+			49: asciiOut = " ";
+			50: asciiOut = " ";
+			51: asciiOut = " ";
+			52: asciiOut = " ";
+			53: asciiOut = " ";
+			default: step = 0;
+		endcase
+		if (step == 0)
 		begin
 			char_a = 16'hffff;
 			char_b = 16'hffff;
 			char_c = 16'hffff;
 			char_d = 16'hffff;
-			asciiOut = " ";
 		end
-		if (step == 2)
+		else
 		begin
 			char_a = char_b;
 			char_b = char_c;
 			char_c = char_d;
-			asciiOut = "A";
 			char_d = segments;
-			end
-		if (step == 3)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			asciiOut = "B";
-			char_d = segments;
-			end
-		if (step == 4)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			asciiOut = "C";
-			char_d = segments;
-		end
-		if (step == 5)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111000101111101; //a
-		end
-		if (step == 6)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-
-		if (step == 7)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1110110111111010; //w
-		end
-		if (step == 8)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111000101111101; //a
-		end
-		if (step == 9)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b0111011001111101; //s
-		end
-		if (step == 10)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 11)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111110001111101; // h
-		end
-
-		if (step == 12)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111010101111110; //e
-		end
-		if (step == 13)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111110101111111; //r
-		end
-		if (step == 14)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111010101111110; //e
-		end
-		if (step == 15)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 16)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 17)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 18)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 19)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 20)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 21)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 22)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-
-		if (step == 23)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 24)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 25)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 26)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; //
-		end
-		if (step == 27)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 28)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 29)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
-		end
-		if (step == 30)
-		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b1111111111111111; // 
 		end
 	end //if
 end //always
