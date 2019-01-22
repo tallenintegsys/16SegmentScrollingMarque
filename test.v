@@ -6,17 +6,23 @@ module test (
 );
 
 wire	clk;
-reg [22:0] count;
-reg [4:0]  step;
+reg [24:0] count; //22
+reg [3:0]  step;
 reg [15:0] char_a;
 reg [15:0] char_b;
 reg [15:0] char_c;
 reg [15:0] char_d;
+reg [7:0] asciiOut;
 
 assign LEDa[15:0] = char_a[15:0];
 assign LEDb[15:0] = char_b[15:0];
 assign LEDc[15:0] = char_c[15:0];
 assign LEDd[15:0] = char_d[15:0];
+assign ascii[7:0] = asciiOut[7:0];
+
+wire ascii[7:0];
+wire segments[15:0];
+charROM crom(.ascii(ascii), .segments(segments));
 
 always @ (posedge clk)
 begin
@@ -26,31 +32,35 @@ begin
 		step = step + 1;
 		if (step == 1)
 		begin
-			char_a = char_b;
-			char_b = char_c;
-			char_c = char_d;
-			char_d = 16'b0010001000111111; //S
+			char_a = 16'hffff;
+			char_b = 16'hffff;
+			char_c = 16'hffff;
+			char_d = 16'hffff;
+			asciiOut = " ";
 		end
 		if (step == 2)
 		begin
 			char_a = char_b;
 			char_b = char_c;
 			char_c = char_d;
-			char_d = 16'b1111000101111101; //a
-		end
+			asciiOut = "A";
+			char_d = segments;
+			end
 		if (step == 3)
 		begin
 			char_a = char_b;
 			char_b = char_c;
 			char_c = char_d;
-			char_d = 16'b1111110101111101; //n
-		end
+			asciiOut = "B";
+			char_d = segments;
+			end
 		if (step == 4)
 		begin
 			char_a = char_b;
 			char_b = char_c;
 			char_c = char_d;
-			char_d = 16'b1111110001111111; //t
+			asciiOut = "C";
+			char_d = segments;
 		end
 		if (step == 5)
 		begin

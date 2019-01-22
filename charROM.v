@@ -11,13 +11,16 @@
 *  aabcddefgghijklm
 *  12  12  12
 *******************/
-module charROM(ascii, seg);
-input [7:0] ascii;
-output [15:0] seg;
+module charROM(
+input wire [7:0] ascii,
+output wire [15:0] segments
+);
 
 reg [15:0] seg;
 
-always @(ascii)
+assign segments[15:0] = seg [15:0];
+
+always 
 begin
 	case(ascii)
 		"0": seg = 16'b0000000011111111;
@@ -72,6 +75,6 @@ begin
 
 		default : seg = 16'b1111111111111111;
 	endcase
-end
+end //always
 
 endmodule
