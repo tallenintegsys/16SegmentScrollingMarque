@@ -20,7 +20,7 @@ reg [15:0] seg;
 
 assign segments[15:0] = seg [15:0];
 
-always 
+always @(ascii)
 begin
 	case(ascii)
 		"0": seg = 16'b0000000011111111;
