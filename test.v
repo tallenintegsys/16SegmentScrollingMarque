@@ -13,7 +13,7 @@ reg [15:0] char_b;
 reg [15:0] char_c;
 reg [15:0] char_d;
 reg [7:0] asciiOut;
-reg [7:0] msg [0:25] = " COBY IS THE BEST       \n";
+reg [7:0] msg [0:25] = " COBY IS THE BEST       \n"/* synthesis syn_romstyle = "select_rom" */;
 
 assign LEDa[15:0] = char_a[15:0];
 assign LEDb[15:0] = char_b[15:0];

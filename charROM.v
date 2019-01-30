@@ -16,7 +16,7 @@ input wire [7:0] ascii,
 output wire [15:0] segments
 );
 
-reg [15:0] seg;
+reg [15:0] seg /* synthesis syn_romstyle = "select_rom" */;
 
 assign segments[15:0] = seg [15:0];
 
