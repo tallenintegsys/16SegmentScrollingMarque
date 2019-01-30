@@ -6,14 +6,14 @@ module test (
 );
 
 wire	clk;
-reg [22:0] count = 0; //22
+reg [20:0] count = 0; //22
 reg [7:0]  step = 0;
 reg [15:0] char_a;
 reg [15:0] char_b;
 reg [15:0] char_c;
 reg [15:0] char_d;
 reg [7:0] asciiOut;
-reg [7:0] msg [0:18] = " COBY IS THE BEST \n";
+reg [7:0] msg [0:25] = " COBY IS THE BEST       \n";
 
 assign LEDa[15:0] = char_a[15:0];
 assign LEDb[15:0] = char_b[15:0];
